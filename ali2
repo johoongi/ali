@@ -1,0 +1,55 @@
+from selenium import webdriver
+import bs4
+from time import sleep
+from selenium.webdriver.common.by import By
+import pandas as pd
+import math
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
+import aliexpresscrwaling as ali_p
+
+chrome_options = Options()
+chrome_options.add_experimental_option("debuggerAddress", "127.0.0.1:9222")
+chrome_driver = '/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --remote-debugging-port=9222 --user-data-dir="~/ChromeProfile"'
+driver = webdriver.Chrome(chrome_driver, options=chrome_options)
+url = input()
+
+
+driver.get(url)
+soup = bs4.BeautifulSoup(driver.page_source, 'lxml')  #
+
+
+
+###메인 실행
+driver.execute_script('window.scrollTo(0, document.body.scrollHeight);')
+wait = input()
+
+all_product = driver.find_elements(By.XPATH, r'//*[@class="' +wait+ '"]')
+
+print(len(all_product))
+ali_exel = []
+
+for product_seperate in all_product[0:]:
+    product_seperate.click()
+    
+    url_product = product_seperate.get_attribute('href')
+    
+    ##열린탭으로 전환
+    driver.switch_to.window(driver.window_handles[-1])
+ 
+    sleep(4)
+
+
+    
+    try:
+      attribute_ali_product = ali_p.seperate_product(driver)
+      print('ok all is good')
+      ali_exel.append(attribute_ali_product)
+    except:
+      print('오류')
+    
+    driver.close()
+    driver.switch_to.window(driver.window_handles[0])
+
+
+pd.DataFrame(ali_exel).to_excel('aliex.xlsx',index=False)
