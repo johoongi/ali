@@ -28,6 +28,23 @@ all_product = driver.find_elements(By.XPATH, r'//*[@class="' +wait+ '"]')
 
 print(len(all_product))
 ali_exel = []
+exel_none = ''
+sanpum_santae = '신상품'
+bugase = '과세상품'
+zagosurang = '999'
+optin_hyutae = '조합형'
+optin_myung = '모델\n옵션'
+option_gap = 'ASJ142800\n'
+option_ga = '0\n'
+wansanzi = "'0200037"
+suipsa = '아므미 협력사'
+misung = 'Y'
+basong = '택배‚ 소포‚ 등기'
+basong_uhyung = '무료'
+banpum = '15000'
+gyohyan = '30000'
+as_number = '02-0000-0000'
+
 
 for product_seperate in all_product[0:]:
     product_seperate.click()
@@ -44,7 +61,62 @@ for product_seperate in all_product[0:]:
     try:
       attribute_ali_product = ali_p.seperate_product(driver)
       print('ok all is good')
-      ali_exel.append(attribute_ali_product)
+
+      ali_exel.append({
+                   '판매자 상품코드' : exel_none,
+                   '카테고리코드':exel_none,
+                   '상품명' : attribute_ali_product[0],
+                   '상품상태' : sanpum_santae,
+                   '판매가' : attribute_ali_product[1],
+                   '부가세' : bugase,
+                   '재고수량' : zagosurang,
+                   '옵션형태' : optin_hyutae,
+                   '옵션명' : optin_myung,
+                   '옵션값' : option_gap + attribute_ali_product[2],
+                   '옵션가' : option_ga + attribute_ali_product[3],
+                   '옵션 재고수량' : zagosurang,
+                   '직접입력 옵션' : exel_none,
+                   '추가상품명' : exel_none,
+                   '추가상품값' : exel_none,
+                   '추가상품가' : exel_none,
+                   '추가상품 재고수량' : exel_none,
+                   '대표이미지' : attribute_ali_product[4],
+                   '추가이미지' : attribute_ali_product[5],
+                   '상세설명' : attribute_ali_product[6],
+                   '브랜드' : exel_none,
+                   '제조사' : exel_none,
+                   '제조일자' : exel_none,
+                   '유효일자' : exel_none,    
+                   '원산지코드' : wansanzi,    
+                   '수입사' : suipsa,    
+                   '복수원산지여부' : exel_none,    
+                   '원산지 직접입력' : exel_none,    
+                   '미성년자 구매' : misung,    
+                   '배송비 템플릿코드' : exel_none,    
+                   '배송방법' : basong,    
+                   '택배사코드' : exel_none,    
+                   '배송비유형' : basong_uhyung,    
+                   '기본배송비' : exel_none,    
+                   '배송비 결제방식' : exel_none,    
+                   '조건부무료-\n상품판매가 합계' : exel_none,    
+                   '수량별부과-수량' : exel_none,    
+                   '구간별-\n2구간수량' : exel_none,    
+                   '구간별-\n3구간수량' : exel_none,    
+                   '구간별-\n3구간배송비' : exel_none,    
+                   '구간별-\n추가배송비' : exel_none,    
+                   '반품배송비' : banpum,    
+                   '교환배송비' : gyohyan,    
+                   '지역별 차등 배송비' : exel_none,    
+                   '별도설치비' : exel_none,    
+                   '상품정보제공고시 템플릿코드' : exel_none,    
+                   '상품정보제공고시\n품명' : exel_none, 
+                   '상품정보제공고시\n모델명' : exel_none, 
+                   '상품정보제공고시\n인증허가사항' : exel_none, 
+                   '상품정보제공고시\n제조자' : exel_none, 
+                   'A/S 템플릿코드' : exel_none, 
+                   'A/S 전화번호' : as_number, 
+                   'A/S 안내' : as_number, 
+                })
     except:
       print('오류')
     
