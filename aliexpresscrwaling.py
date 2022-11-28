@@ -125,7 +125,7 @@ def seperate_product(driver):
     option_box_end = option_top_code + option_box_inner + option_bottom_code
     
     
-    
+
     
     
     #print(optional_image_all)
@@ -240,6 +240,8 @@ def seperate_product(driver):
 
         just_calculator = just_calculator+1
     
+
+    img_src_all = img_src_all + '<div><img src="https://shop-phinf.pstatic.net/20221129_12/1669649157446IMdrf_JPEG/%EC%A0%9C%EB%AA%A9%EC%9D%84-%EC%9E%85%EB%A0%A5%ED%95%B4%EC%A3%BC%EC%84%B8%EC%9A%94_.jpg?type=w860" data-src="https://shop-phinf.pstatic.net/20221129_12/1669649157446IMdrf_JPEG/%EC%A0%9C%EB%AA%A9%EC%9D%84-%EC%9E%85%EB%A0%A5%ED%95%B4%EC%A3%BC%EC%84%B8%EC%9A%94_.jpg?type=w860" alt="" class="se-image-resource"></div><br>'
     #print('타이틀')
     #print(title)
     #print()
@@ -266,7 +268,7 @@ def seperate_product(driver):
       
     
     exel_data_easy = []
-    
+
     exel_data_easy.append({
                    '판매자 상품코드' : '',
                    '카테고리코드':'',
