@@ -270,7 +270,7 @@ def seperate_product(driver):
     
     exel_data_easy = []
     
-    return exel_data_easy.append({
+    exel_data_easy.append({
                    '판매자 상품코드' : '',
                    '카테고리코드':'',
                    '상품명' : title,
@@ -326,6 +326,7 @@ def seperate_product(driver):
                    'A/S 안내' : '02-0000-0000', 
                 })
     
+    return title, first_price, option_image_name_all, price_all, major_img_src, view_img_all, img_src_all
     
     #exel_data.append({
     #               '판매자 상품코드' : '',
