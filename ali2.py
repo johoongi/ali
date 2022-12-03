@@ -12,10 +12,13 @@ chrome_options = Options()
 chrome_options.add_experimental_option("debuggerAddress", "127.0.0.1:9222")
 chrome_driver = '/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --remote-debugging-port=9222 --user-data-dir="~/ChromeProfile"'
 driver = webdriver.Chrome(chrome_driver, options=chrome_options)
-url = input()
+url1 = input()
+url2 = input()
+#url3 = input()
+#url4 = input()
+#url5 = input()
 
 
-driver.get(url)
 soup = bs4.BeautifulSoup(driver.page_source, 'lxml')  #
 
 
@@ -23,17 +26,21 @@ soup = bs4.BeautifulSoup(driver.page_source, 'lxml')  #
 ###메인 실행
 wait1 = input()
 
+all_page_number = 1
 
-
-p_c_n_arr = [0,1,2,3,4]
+p_c_n_arr = [url1,url2]
+smartsore_exel = []
 
 for p_c_n in p_c_n_arr[0:]:
+  try:
+      driver.get(p_c_n)
+      sleep(3)
       all_product = driver.find_elements(By.XPATH, r'//*[@class="' +wait1+ '"]')
-      smartsore_exel = []
+
       cal_number = 0
 
       number_arr = len(all_product)
-      
+  
       for number_arr in range(60):
             all_product[number_arr - 1].click()
             print(number_arr)
@@ -132,7 +139,15 @@ for p_c_n in p_c_n_arr[0:]:
           
           driver.close()
           driver.switch_to.window(driver.window_handles[0])
-      driver.find_element(By.CSS_SELECTOR, 'pagination--paginationLink--2ucXUo6 next-next')
-
+          sleep(0.5)
+      #driver.find_element(By.XPATH, r'//*[@class="list-pagination"]').click()
+      #driver.find_element(By.XPATH, r'//*[@class="next-btn next-medium next-btn-normal next-pagination-item next-next"]').click()
+      #sleep(3)
+      #all_product = driver.find_elements(By.XPATH, r'//*[@class="' +wait1+ '"]')
+      #all_page_number = all_page_number + 1
+      #url.replace('page=1','page=' + str(all_page_number))
+      #driver.get(url)
+  except:
+    print('페이지불러오기 오류')
 ##스마트스토어
 pd.DataFrame(smartsore_exel).to_excel('smartsore.xlsx',index=False)
