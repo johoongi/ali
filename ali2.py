@@ -14,9 +14,9 @@ chrome_driver = '/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome 
 driver = webdriver.Chrome(chrome_driver, options=chrome_options)
 url1 = input()
 url2 = input()
-#url3 = input()
-#url4 = input()
-#url5 = input()
+url3 = input()
+url4 = input()
+url5 = input()
 
 
 soup = bs4.BeautifulSoup(driver.page_source, 'lxml')  #
@@ -28,12 +28,13 @@ wait1 = input()
 
 all_page_number = 1
 
-p_c_n_arr = [url1,url2]
+p_c_n_arr = [url1,url2,url3,url4,url5]
 smartsore_exel = []
 
 for p_c_n in p_c_n_arr[0:]:
   try:
       driver.get(p_c_n)
+      print(p_c_n)
       sleep(3)
       all_product = driver.find_elements(By.XPATH, r'//*[@class="' +wait1+ '"]')
 
