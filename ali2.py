@@ -1,3 +1,4 @@
+#-*- coding:utf-8 -*-
 from selenium import webdriver
 import bs4
 from time import sleep
@@ -15,9 +16,13 @@ driver = webdriver.Chrome(chrome_driver, options=chrome_options)
 url1 = input()
 url2 = input()
 url3 = input()
-#url4 = input()
-#url5 = input()
-
+url4 = input()
+url5 = input()
+url6 = input()
+url7 = input()
+url8 = input()
+url9 = input()
+url10 = input()
 
 soup = bs4.BeautifulSoup(driver.page_source, 'lxml')  #
 
@@ -28,7 +33,7 @@ wait1 = input()
 
 all_page_number = 1
 
-p_c_n_arr = [url1,url2,url3]
+p_c_n_arr = [url1,url2,url3,url4,url5,url6,url7,url8,url9,url10]
 smartsore_exel = []
 
 for p_c_n in p_c_n_arr[0:]:

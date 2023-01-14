@@ -159,7 +159,7 @@ def seperate_product(driver):
         price_add_ship_origin = price_int + ship_pice
         
         ##판매가
-        price_add_ship = price_add_ship_origin * 1.4
+        price_add_ship = price_add_ship_origin * 1.6
         
         ##판매가 정수
         price_add_ship_round = round(price_add_ship, -2)
@@ -167,8 +167,8 @@ def seperate_product(driver):
         ##내 수익
         price_my_money = price_add_ship - price_add_ship_origin
     
-        if price_my_money < 6000:
-            price_add_end = 6000 + price_add_ship_origin
+        if price_my_money < 10000:
+            price_add_end = 10000 + price_add_ship_origin
         else:
             price_add_end = price_add_ship_round
     
@@ -197,13 +197,13 @@ def seperate_product(driver):
         first_price = first_price.replace(',','')
         first_price = int(first_price)
         first_price_add_ship = first_price + ship_pice
-        price_add_end = first_price_add_ship * 1.4
+        price_add_end = first_price_add_ship * 1.6
         
         ##내 수익
         price_my_money = price_add_end - first_price
     
-        if price_my_money < 6000:
-            first_price = 6000 + first_price
+        if price_my_money < 10000:
+            first_price = 10000 + first_price
         else:
             first_price = price_add_end
     
